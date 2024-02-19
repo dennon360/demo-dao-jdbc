@@ -11,17 +11,23 @@ import model.entities.Seller;
 public class Program {
 
 	public static void main(String[] args) {
-		List<Seller> obj = new ArrayList<>();
+		List<Seller> list = new ArrayList<>();
 		SellerDao sellerDao = DaoFactory.createSellerDao();
 		
 		System.out.println("=== TEST 1: seller findById ====");
 		Seller seller = sellerDao.findById(3);
 		System.out.println(seller);
 		
-		System.out.println("=== TEST 2: seller findByDepartment ====");
+		System.out.println("\n=== TEST 2: seller findByDepartment ====");
 		Department dep = new Department(2, "Electronics");
-		obj = sellerDao.findByDepartment(dep);
-		for (Seller e : obj) {
+		list = sellerDao.findByDepartment(dep);
+		for (Seller e : list) {
+			System.out.println(e);
+		}
+		
+		System.out.println("\n=== TEST 3: seller findAll ====");
+		list = sellerDao.findAll();
+		for (Seller e : list) {
 			System.out.println(e);
 		}
 	}
